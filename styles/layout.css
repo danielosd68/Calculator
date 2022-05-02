@@ -36,6 +36,14 @@ html body main .calculator input[type="text"] {
   user-select: none;
 }
 
+@media only screen and (max-width: 800px) {
+  html body main .calculator input[type="text"] {
+    width: 250px;
+    height: 70px;
+    font-size: 2.4em;
+  }
+}
+
 html body main .calculator .numbers .element:hover {
   background-color: white;
   color: black;
@@ -47,6 +55,12 @@ html body main .calculator .numbers .element {
   font-size: 2.5em;
   user-select: none;
   transition: all 0.3s ease-in-out;
+}
+
+@media only screen and (max-width: 800px) {
+  html body main .calculator .numbers .element {
+    font-size: 1.5em;
+  }
 }
 
 html body main .calculator .numbers .function {

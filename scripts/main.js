@@ -255,7 +255,7 @@ jQuery(document).ready(function () {
         let action = arr.join("");
 
         result = eval(action);
-        if (result === Infinity || result === NaN) {
+        if (result === Infinity || result === NaN || result === -Infinity) {
             result = "Błąd matematyczny";
 
             setTimeout(() => {

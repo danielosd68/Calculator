@@ -38,6 +38,12 @@ html {
                     padding: 2%;
                     user-select: none;
 
+                    @media only screen and (max-width:800px) {
+                        width: 250px;
+                        height: 70px;
+                        font-size: 2.4em;
+                    }
+
                 }
 
                 .numbers {
@@ -53,6 +59,10 @@ html {
                         font-size: 2.5em;
                         user-select: none;
                         transition: all 0.3s ease-in-out;
+
+                        @media only screen and (max-width:800px) {
+                            font-size: 1.5em;
+                        }
                     }
 
                     .function {

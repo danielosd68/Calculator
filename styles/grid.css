@@ -13,6 +13,13 @@ html body main .calculator {
   flex-direction: column;
 }
 
+@media only screen and (max-width: 800px) {
+  html body main .calculator {
+    width: 300px;
+    height: 500px;
+  }
+}
+
 html body main .calculator input[type="text"] {
   background-color: #2a2e3b;
   border-radius: 61px;
@@ -39,4 +46,11 @@ html body main .calculator .numbers .element {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+  html body main .calculator .numbers .element {
+    width: 40px;
+    height: 40px;
+  }
 }
