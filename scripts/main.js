@@ -223,6 +223,7 @@ jQuery(document).ready(function () {
         let value = parseInt($("#result").val());
         result = (value / 100);
         $("#result").attr("value", result);
+        arr.splice(0, arr.length + 1, result);
 
 
     });
