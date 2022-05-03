@@ -1,11 +1,6 @@
-
-
-
 jQuery(document).ready(function () {
-
     let arr = [];
     let result = 0;
-
 
     class AddToArray {
 
@@ -13,9 +8,9 @@ jQuery(document).ready(function () {
             this.number = number;
 
 
-            if (result == "Błąd matematyczny") {
+            if (result == "Błąd matematyczny!") {
                 $("#result").attr("value", "1");
-                arr.splice(0, arr.length + 1, 0);
+                arr.splice(0, arr.length + 1);
             }
 
             //Specjalny przypadek (po wprowadzeniu liczby 0)
@@ -27,9 +22,9 @@ jQuery(document).ready(function () {
                     this.isZeroInInput(number);
                 }
 
-                if (result == "Błąd matematyczny") {
+                if (result == "Błąd matematyczny!") {
                     $("#result").attr("value", "0");
-                    arr.splice(0, arr.length + 1, 0);
+                    arr.splice(0, arr.length + 1);
                 }
             }
 
@@ -62,15 +57,15 @@ jQuery(document).ready(function () {
         constructor(type) {
             this.type = type;
 
-            if (result == "Błąd matematyczny") {
+            if (result == "Błąd matematyczny!") {
                 $("#result").attr("value", "");
-                arr.splice(0, arr.length + 1, 0);
+                arr.splice(0, arr.length + 1);
             }
 
             if (type === "%") {
-                if (result == "Błąd matematyczny") {
+                if (result == "Błąd matematyczny!") {
                     result = 0;
-                    arr.splice(0, arr.length + 1, 0);
+                    arr.splice(0, arr.length + 1);
                 }
                 let value = parseInt($("#result").val());
                 result = (value / 100);
@@ -90,16 +85,33 @@ jQuery(document).ready(function () {
             let action = arr.join("");
             console.log(action);
 
+
+            window.addEventListener('error', (e) => {
+                $("#result").attr('value', 'Błąd składni!');
+
+                setTimeout(() => {
+                    result = "";
+                    $("#result").attr("value", 0);
+                    arr.splice(0, arr.length + 1, result);
+                }, 2000);
+                arr.splice(0, arr.length + 1);
+
+            });
+
+
             result = eval(action);
+
+
+
             if (result === Infinity || result === NaN || result === -Infinity) {
-                result = "Błąd matematyczny";
+                result = "Błąd matematyczny!";
 
                 setTimeout(() => {
                     result = 0;
                     $("#result").attr("value", result);
                     arr.splice(0, arr.length + 1, result);
                 }, 2000);
-                arr.splice(0, arr.length + 1, 0);
+                arr.splice(0, arr.length + 1);
 
             };
 
@@ -123,6 +135,24 @@ jQuery(document).ready(function () {
             $("#result").attr("value", "0");
             console.log(arr);
 
+        }
+
+        comma() {
+            if (result == "Błąd matematyczny!") {
+                $("#result").attr("value", "");
+                arr.splice(0, arr.length + 1);
+            }
+
+
+
+
+            $("#result").attr("value", $("#result").val() + ",");
+            arr.push(".");
+
+
+
+
+            console.log(arr);
         }
     }
 
@@ -216,21 +246,7 @@ jQuery(document).ready(function () {
     /*Przecinek*/
     $(".element:nth-child(19)").click(() => {
 
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "");
-            arr.splice(0, arr.length + 1, 0);
-        }
-
-
-
-
-        $("#result").attr("value", $("#result").val() + ",");
-        arr.push(".");
-
-
-
-
-        console.log(arr);
+        functions.comma();
 
     });
 
@@ -239,11 +255,8 @@ jQuery(document).ready(function () {
         functions.equal();
     });
 
-
     let date = new Date();
-
     let year = date.getFullYear();
-
     $("footer h3").html(`&copy; Copyright ${year} <a href='https://github.com/danielosd68'>Daniel Chyliński</a>`);
 
 
