@@ -1,6 +1,6 @@
 jQuery(document).ready(function () {
 
-    let arr = [0];
+    let arr = [];
     let result = 0;
 
     function isZeroInInput(input) {
@@ -12,6 +12,7 @@ jQuery(document).ready(function () {
             $("#result").attr("value", $("#result").val() + input);
         }
     }
+
 
 
 
@@ -233,9 +234,9 @@ jQuery(document).ready(function () {
     $(".element:nth-child(2)").click(() => {
 
         arr.splice(0, arr.length + 1, 0);
-        console.log(arr);
-        $("#result").attr("value", "0");
 
+        $("#result").attr("value", "0");
+        console.log(arr);
 
 
 
@@ -246,6 +247,27 @@ jQuery(document).ready(function () {
 
         arr.splice(0, arr.length + 1, 0);
         $("#result").attr("value", "0");
+        console.log(arr);
+
+    });
+
+    $(".element:nth-child(19)").click(() => {
+
+        if (result == "Błąd matematyczny") {
+            $("#result").attr("value", "");
+            arr.splice(0, arr.length + 1, 0);
+        }
+
+
+
+
+        $("#result").attr("value", $("#result").val() + ",");
+        arr.push(".");
+
+
+
+
+        console.log(arr);
 
     });
 
@@ -254,6 +276,7 @@ jQuery(document).ready(function () {
 
 
         let action = arr.join("");
+        console.log(action);
 
         result = eval(action);
         if (result === Infinity || result === NaN || result === -Infinity) {
@@ -277,11 +300,11 @@ jQuery(document).ready(function () {
     });
 
 
+    let date = new Date();
 
+    let year = date.getFullYear();
 
-
-
-
+    $("footer h3").html(`&copy; Copyright ${year} <a href='https://github.com/danielosd68'>Daniel Chyliński</a>`);
 
 
 });

@@ -22,7 +22,8 @@ html body main .calculator {
 
 html body main .calculator input[type="text"] {
   background-color: #2a2e3b;
-  border-radius: 61px;
+  border-top-left-radius: 61px;
+  border-top-right-radius: 61px;
   border: none;
   margin-bottom: 31px;
 }
@@ -34,6 +35,7 @@ html body main .calculator .numbers {
   flex-direction: row;
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 20px;
 }
 
 html body main .calculator .numbers .element {
