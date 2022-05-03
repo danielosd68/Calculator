@@ -52,7 +52,9 @@ html body main .calculator .numbers .element {
 
 @media only screen and (max-width: 800px) {
   html body main .calculator .numbers .element {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }

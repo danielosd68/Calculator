@@ -123,10 +123,13 @@ jQuery(document).ready(function () {
             result = 0;
         }
 
-        CE() {
-            arr.splice(0, arr.length + 1);
+        backspace() {
+            arr.pop();
 
-            $("#result").attr("value", "0");
+            $("#result").attr("value", arr.join(""));
+            if (arr.length == 0) {
+                $("#result").attr("value", 0);
+            }
             console.log(arr);
         }
 
@@ -146,7 +149,7 @@ jQuery(document).ready(function () {
 
 
 
-            $("#result").attr("value", $("#result").val() + ",");
+            $("#result").attr("value", $("#result").val() + ".");
             arr.push(".");
 
 
@@ -229,10 +232,10 @@ jQuery(document).ready(function () {
     let functions = new Functions;
 
 
-    /*CE*/
+    /*backspace*/
     $(".element:nth-child(2)").click(() => {
 
-        functions.CE();
+        functions.backspace();
 
 
     });
@@ -258,6 +261,10 @@ jQuery(document).ready(function () {
     let date = new Date();
     let year = date.getFullYear();
     $("footer h3").html(`&copy; Copyright ${year} <a href='https://github.com/danielosd68'>Daniel Chyliński</a>`);
+
+
+
+
 
 
 });
