@@ -149,7 +149,7 @@ jQuery(document).ready(function () {
 
 
 
-            $("#result").attr("value", $("#result").val() + ".");
+            $("#result").attr("value", $("#result").val() + ",");
             arr.push(".");
 
 
