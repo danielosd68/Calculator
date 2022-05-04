@@ -2,32 +2,20 @@ jQuery(document).ready(function () {
     let arr = [];
     let result = 0;
 
-    function mathError() {
-        if (result == "Błąd matematyczny!") {
-            $("#result").attr("value", "0");
-            arr.splice(0, arr.length + 1);
-            console.log(arr);
-        }
-    }
-
     class AddToArray {
 
         constructor(number) {
             this.number = number;
 
-            mathError();
-
-
-            //Specjalny przypadek (po wprowadzeniu liczby 0)
+            //Specjalny przypadek (gdy jest liczba 0)
             if (number === "0") {
                 if (this.isZeroInInput(number) != true) {
-                    arr.push(number);
+                    arr.unshift(number);
                 }
                 else {
                     this.isZeroInInput(number);
                 }
 
-                mathError();
             }
 
             //W pozostałych przypadkach
@@ -38,46 +26,24 @@ jQuery(document).ready(function () {
 
 
 
-
         }
-
         isZeroInInput(input) {
-            if ($("#result").val() == 0) {
+            if ($("#result").val() == 0 && typeof (input) == "number") {
                 $("#result").attr("value", input);
+
                 return true;
             }
             else {
                 $("#result").attr("value", $("#result").val() + input);
             }
         }
-
-
-    }
-
-
-    class Operation {
-        constructor(type) {
-            this.type = type;
-
-            mathError();
-
-            if (type === "%") {
-                mathError();
-                let value = parseInt($("#result").val());
-                result = (value / 100);
-                $("#result").attr("value", result);
-                arr.splice(0, arr.length + 1, result);
-            }
-            else {
-                $("#result").attr("value", $("#result").val() + type);
-                arr.push(type);
-            }
-
-        }
     }
 
     class Functions {
         equal() {
+            if (typeof (arr[0]) != "number") {
+                arr.unshift(0);
+            }
             let action = arr.join("");
             console.log(action);
 
@@ -95,9 +61,8 @@ jQuery(document).ready(function () {
             });
 
 
+
             result = eval(action);
-
-
 
             if (result === Infinity || result === NaN || result === -Infinity) {
                 result = "Błąd matematyczny!";
@@ -111,7 +76,6 @@ jQuery(document).ready(function () {
                 console.log(arr);
 
             };
-
 
             console.log(action);
 
@@ -127,29 +91,22 @@ jQuery(document).ready(function () {
             if (arr.length == 0) {
                 $("#result").attr("value", 0);
             }
-            console.log(arr);
+
         }
 
         C() {
             arr.splice(0, arr.length + 1);
             $("#result").attr("value", "0");
-            console.log(arr);
+
 
         }
 
         comma() {
-            mathError();
-
-
-
 
             $("#result").attr("value", $("#result").val() + ",");
             arr.push(".");
 
 
-
-
-            console.log(arr);
         }
     }
 
@@ -200,27 +157,27 @@ jQuery(document).ready(function () {
 
     /*Dzielenie*/
     $(".divider").click(function dzielenie() {
-        let divider = new Operation(" / ");
+        let divider = new AddToArray(" / ");
     });
 
     /*Mnożenie*/
     $(".multiplication").click(() => {
-        let multiplication = new Operation(" * ");
+        let multiplication = new AddToArray(" * ");
     });
 
     /*Odejmowanie*/
     $(".substraction").click(() => {
-        let subtraction = new Operation(" - ");
+        let subtraction = new AddToArray(" - ");
     });
 
     /*Dodawanie*/
     $(".plus").click(() => {
-        let add = new Operation(" + ");
+        let add = new AddToArray(" + ");
     });
 
     /*Procent*/
     $(".percent").click(() => {
-        let percent = new Operation("%")
+        let percent = new AddToArray("%")
     });
 
     let functions = new Functions;
@@ -228,23 +185,17 @@ jQuery(document).ready(function () {
 
     /*backspace*/
     $(".backspace").click(() => {
-
         functions.backspace();
-
-
     });
 
     /*C*/
     $(".clear").click(() => {
-
         functions.C();
     });
 
     /*Przecinek*/
     $(".comma").click(() => {
-
         functions.comma();
-
     });
 
     $(".equal").click(() => {
@@ -255,10 +206,6 @@ jQuery(document).ready(function () {
     let date = new Date();
     let year = date.getFullYear();
     $("footer h3").html(`&copy; Copyright ${year} <a href='https://github.com/danielosd68'>Daniel Chyliński</a>`);
-
-
-
-
 
 
 });
