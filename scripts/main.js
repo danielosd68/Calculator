@@ -86,7 +86,7 @@ jQuery(document).ready(function () {
 
             arr.splice(0, arr.length + 1, result);
             $("#result").attr("value", result);
-            result = 0;
+
         }
 
         backspace() {
@@ -111,6 +111,17 @@ jQuery(document).ready(function () {
             $("#result").attr("value", $("#result").val() + ",");
             arr.push(".");
 
+
+        }
+
+        percent() {
+            this.equal();
+
+            result = (result / 100);
+
+            arr.splice(0, arr.length + 1, result);
+            $("#result").attr("value", result);
+            result = 0;
 
         }
     }
@@ -178,13 +189,14 @@ jQuery(document).ready(function () {
         let add = new AddToArray(" + ");
     });
 
-    /*Procent*/
-    $(".percent").click(() => {
-        let percent = new AddToArray("%")
-    });
+
 
     let functions = new Functions;
 
+    /*Procent*/
+    $(".percent").click(() => {
+        functions.percent();
+    });
 
     /*backspace*/
     $(".backspace").click(() => {
