@@ -62,8 +62,8 @@ jQuery(document).ready(function () {
 
             });
 
-            Number.prototype.round = function (miejsc) {
-                return +(Math.round(this + "e+" + miejsc) + "e-" + miejsc);
+            Number.prototype.round = function (nr) {
+                return +(Math.round(this + "e+" + nr) + "e-" + nr);
             }
 
             result = (eval(action)).round(14);
