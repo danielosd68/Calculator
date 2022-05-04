@@ -111,8 +111,6 @@ jQuery(document).ready(function () {
     }
 
 
-    ///////////////////////////////////////////////////////////
-
     $(".one").click(() => {
         let one = new AddToArray(1);
     });
