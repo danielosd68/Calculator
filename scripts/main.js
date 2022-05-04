@@ -2,18 +2,21 @@ jQuery(document).ready(function () {
     let arr = [];
     let result = 0;
 
-
+    function mathError() {
+        if (result == "Błąd matematyczny!") {
+            $("#result").attr("value", "0");
+            arr.splice(0, arr.length + 1);
+            console.log(arr);
+        }
+    }
 
     class AddToArray {
 
         constructor(number) {
             this.number = number;
 
+            mathError();
 
-            if (result == "Błąd matematyczny!") {
-                $("#result").attr("value", "1");
-                arr.splice(0, arr.length + 1);
-            }
 
             //Specjalny przypadek (po wprowadzeniu liczby 0)
             if (number === "0") {
@@ -24,10 +27,7 @@ jQuery(document).ready(function () {
                     this.isZeroInInput(number);
                 }
 
-                if (result == "Błąd matematyczny!") {
-                    $("#result").attr("value", "0");
-                    arr.splice(0, arr.length + 1);
-                }
+                mathError();
             }
 
             //W pozostałych przypadkach
@@ -59,16 +59,10 @@ jQuery(document).ready(function () {
         constructor(type) {
             this.type = type;
 
-            if (result == "Błąd matematyczny!") {
-                $("#result").attr("value", "");
-                arr.splice(0, arr.length + 1);
-            }
+            mathError();
 
             if (type === "%") {
-                if (result == "Błąd matematyczny!") {
-                    result = 0;
-                    arr.splice(0, arr.length + 1);
-                }
+                mathError();
                 let value = parseInt($("#result").val());
                 result = (value / 100);
                 $("#result").attr("value", result);
@@ -111,9 +105,10 @@ jQuery(document).ready(function () {
                 setTimeout(() => {
                     result = 0;
                     $("#result").attr("value", result);
-                    arr.splice(0, arr.length + 1, result);
+                    arr.splice(0, arr.length + 1);
                 }, 2000);
                 arr.splice(0, arr.length + 1);
+                console.log(arr);
 
             };
 
@@ -143,10 +138,7 @@ jQuery(document).ready(function () {
         }
 
         comma() {
-            if (result == "Błąd matematyczny!") {
-                $("#result").attr("value", "");
-                arr.splice(0, arr.length + 1);
-            }
+            mathError();
 
 
 
