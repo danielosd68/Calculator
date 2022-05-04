@@ -44,8 +44,10 @@ jQuery(document).ready(function () {
             if (typeof (arr[0]) != "number") {
                 arr.unshift(0);
             }
+
+
             let action = arr.join("");
-            console.log(action);
+            console.log("Działanie: " + action);
 
 
             window.addEventListener('error', (e) => {
@@ -63,8 +65,9 @@ jQuery(document).ready(function () {
 
 
             result = eval(action);
+            console.log("Działanie: " + result);
 
-            if (result === Infinity || result === NaN || result === -Infinity) {
+            if (result == Infinity || isNaN(result) === true || result == -Infinity) {
                 result = "Błąd matematyczny!";
 
                 setTimeout(() => {
