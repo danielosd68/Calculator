@@ -62,9 +62,11 @@ jQuery(document).ready(function () {
 
             });
 
+            Number.prototype.round = function (miejsc) {
+                return +(Math.round(this + "e+" + miejsc) + "e-" + miejsc);
+            }
 
-
-            result = eval(action);
+            result = (eval(action)).round(14);
             console.log("Działanie: " + result);
 
             if (result == Infinity || isNaN(result) === true || result == -Infinity) {
