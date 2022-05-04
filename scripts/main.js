@@ -17,15 +17,11 @@ jQuery(document).ready(function () {
                 }
 
             }
-
             //W pozostałych przypadkach
             else {
                 this.isZeroInInput(number);
                 arr.push(number);
             }
-
-
-
         }
         isZeroInInput(input) {
             if ($("#result").val() == 0 && typeof (input) == "number") {
