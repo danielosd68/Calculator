@@ -2,6 +2,8 @@ jQuery(document).ready(function () {
     let arr = [];
     let result = 0;
 
+
+
     class AddToArray {
 
         constructor(number) {
@@ -92,7 +94,7 @@ jQuery(document).ready(function () {
                 setTimeout(() => {
                     result = "";
                     $("#result").attr("value", 0);
-                    arr.splice(0, arr.length + 1, result);
+                    arr.splice(0, arr.length + 1);
                 }, 2000);
                 arr.splice(0, arr.length + 1);
 
@@ -162,70 +164,70 @@ jQuery(document).ready(function () {
 
     ///////////////////////////////////////////////////////////
 
-    $(".element:nth-child(13)").click(() => {
-        let one = new AddToArray("1");
+    $(".one").click(() => {
+        let one = new AddToArray(1);
     });
 
-    $(".element:nth-child(14)").click(() => {
-        let two = new AddToArray("2");
+    $(".two").click(() => {
+        let two = new AddToArray(2);
     });
 
-    $(".element:nth-child(15)").click(() => {
-        let three = new AddToArray("3");
+    $(".three").click(() => {
+        let three = new AddToArray(3);
     });
 
-    $(".element:nth-child(5)").click(() => {
-        let seven = new AddToArray("7");
+    $(".seven").click(() => {
+        let seven = new AddToArray(7);
     });
 
-    $(".element:nth-child(6)").click(() => {
-        let eight = new AddToArray("8")
+    $(".eight").click(() => {
+        let eight = new AddToArray(8)
     });
 
-    $(".element:nth-child(7)").click(() => {
-        let nine = new AddToArray("9")
+    $(".nine").click(() => {
+        let nine = new AddToArray(9)
     });
 
-    $(".element:nth-child(9)").click(() => {
-        let four = new AddToArray("4")
+    $(".four").click(() => {
+        let four = new AddToArray(4)
     });
 
-    $(".element:nth-child(10)").click(() => {
-        let five = new AddToArray("5")
+    $(".five").click(() => {
+        let five = new AddToArray(5)
     });
 
-    $(".element:nth-child(11)").click(() => {
-        let six = new AddToArray("6")
+    $(".six").click(() => {
+        let six = new AddToArray(6)
     });
 
-    $(".element:nth-child(18)").click(() => {
-        let zero = new AddToArray("0")
+    $(".zero").click(() => {
+        let zero = new AddToArray(0)
     });
 
     //Działanie klawiszy funkcyjnych
 
     /*Dzielenie*/
-    $(".element:nth-child(4)").click(function dzielenie() {
+    $(".divider").click(function dzielenie() {
         let divider = new Operation(" / ");
     });
 
     /*Mnożenie*/
-    $(".element:nth-child(8)").click(() => {
+    $(".multiplication").click(() => {
         let multiplication = new Operation(" * ");
     });
 
     /*Odejmowanie*/
-    $(".element:nth-child(12)").click(() => {
+    $(".substraction").click(() => {
         let subtraction = new Operation(" - ");
     });
 
     /*Dodawanie*/
-    $(".element:nth-child(16)").click(() => {
+    $(".plus").click(() => {
         let add = new Operation(" + ");
     });
 
     /*Procent*/
-    $(".element:nth-child(1)").click(() => {
+    $(".percent").click(() => {
         let percent = new Operation("%")
     });
 
@@ -233,7 +235,7 @@ jQuery(document).ready(function () {
 
 
     /*backspace*/
-    $(".element:nth-child(2)").click(() => {
+    $(".backspace").click(() => {
 
         functions.backspace();
 
@@ -241,19 +243,19 @@ jQuery(document).ready(function () {
     });
 
     /*C*/
-    $(".element:nth-child(3)").click(() => {
+    $(".clear").click(() => {
 
         functions.C();
     });
 
     /*Przecinek*/
-    $(".element:nth-child(19)").click(() => {
+    $(".comma").click(() => {
 
         functions.comma();
 
     });
 
-    $(".element:nth-child(20)").click(() => {
+    $(".equal").click(() => {
 
         functions.equal();
     });
