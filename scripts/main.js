@@ -51,7 +51,7 @@ jQuery(document).ready(function () {
 
 
             window.addEventListener('error', (e) => {
-                $("#result").attr('value', 'Błąd składni!');
+                $("#result").attr('value', 'Błąd!');
 
                 setTimeout(() => {
                     result = "";
@@ -70,7 +70,7 @@ jQuery(document).ready(function () {
             console.log("Działanie: " + result);
 
             if (result == Infinity || isNaN(result) === true || result == -Infinity) {
-                result = "Błąd matematyczny!";
+                result = "Błąd!";
 
                 setTimeout(() => {
                     result = 0;
