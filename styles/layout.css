@@ -70,6 +70,16 @@ html body main .calculator .numbers .function {
   background-color: #57607b;
 }
 
+html body main .disabled-header {
+  position: relative;
+  left: -100%;
+}
+
+html body main .disabled-li {
+  position: relative;
+  left: -250%;
+}
+
 html body footer {
   text-align: center;
 }

@@ -76,6 +76,18 @@ html {
 
 
             }
+
+            .disabled-header {
+                position: relative;
+                left: -100%;
+            }
+
+            .disabled-li {
+                position: relative;
+                left: -250%;
+            }
+
+            
         }
 
         footer {
