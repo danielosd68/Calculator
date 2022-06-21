@@ -1,310 +1,220 @@
 jQuery(document).ready(function () {
-
     let arr = [];
     let result = 0;
 
-    function isZeroInInput(input) {
-        if ($("#result").val() == 0) {
-            $("#result").attr("value", input);
-            return true;
+    class AddToArray {
+
+        constructor(number) {
+            this.number = number;
+
+            //Specjalny przypadek (gdy jest liczba 0)
+            if (number === "0") {
+                if (this.isZeroInInput(number) != true) {
+                    arr.unshift(number);
+                }
+                else {
+                    this.isZeroInInput(number);
+                }
+
+            }
+            //W pozostałych przypadkach
+            else {
+                this.isZeroInInput(number);
+                arr.push(number);
+            }
         }
-        else {
-            $("#result").attr("value", $("#result").val() + input);
+        isZeroInInput(input) {
+            if ($("#result").val() == 0 && typeof (input) == "number") {
+                $("#result").attr("value", input);
+
+                return true;
+            }
+            else {
+                $("#result").attr("value", $("#result").val() + input);
+            }
+        }
+    }
+
+    class Functions {
+        equal() {
+            if (typeof (arr[0]) != "number") {
+                arr.unshift(0);
+            }
+
+
+            let action = arr.join("");
+            console.log("Działanie: " + action);
+
+
+            window.addEventListener('error', (e) => {
+                $("#result").attr('value', 'Błąd!');
+
+                setTimeout(() => {
+                    result = "";
+                    $("#result").attr("value", 0);
+                    arr.splice(0, arr.length + 1);
+                }, 2000);
+                arr.splice(0, arr.length + 1);
+
+            });
+
+            Number.prototype.round = function (nr) {
+                return +(Math.round(this + "e+" + nr) + "e-" + nr);
+            }
+
+            result = (eval(action)).round(14);
+            console.log("Działanie: " + result);
+
+            if (result == Infinity || isNaN(result) === true || result == -Infinity) {
+                result = "Błąd!";
+
+                setTimeout(() => {
+                    result = 0;
+                    $("#result").attr("value", result);
+                    arr.splice(0, arr.length + 1);
+                }, 2000);
+                arr.splice(0, arr.length + 1);
+                console.log(arr);
+
+            };
+
+            console.log(action);
+
+            arr.splice(0, arr.length + 1, result);
+            $("#result").attr("value", result);
+
+        }
+
+        backspace() {
+            arr.pop();
+
+            $("#result").attr("value", arr.join(""));
+            if (arr.length == 0) {
+                $("#result").attr("value", 0);
+            }
+
+        }
+
+        C() {
+            arr.splice(0, arr.length + 1);
+            $("#result").attr("value", "0");
+
+
+        }
+
+        comma() {
+
+            $("#result").attr("value", $("#result").val() + ",");
+            arr.push(".");
+
+
+        }
+
+        percent() {
+            this.equal();
+
+            result = (result / 100);
+
+            arr.splice(0, arr.length + 1, result);
+            $("#result").attr("value", result);
+            result = 0;
+
         }
     }
 
 
-
-
-    ///////////////////////////////////////////////////////////
-
-    $(".element:nth-child(13)").click(() => {
-
-
-        isZeroInInput("1");
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "1");
-            arr.splice(0, arr.length + 1, 0);
-        }
-
-
-        arr.push(1);
-        console.log(arr);
-
+    $(".one").click(() => {
+        let one = new AddToArray(1);
     });
 
-    $(".element:nth-child(14)").click(() => {
-
-
-
-        isZeroInInput("2");
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "2");
-            arr.splice(0, arr.length + 1, 0);
-        }
-        arr.push(2);
-
+    $(".two").click(() => {
+        let two = new AddToArray(2);
     });
 
-    $(".element:nth-child(15)").click(() => {
-
-
-
-        isZeroInInput("3");
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "3");
-            arr.splice(0, arr.length + 1, 0);
-        }
-        arr.push(3);
-
+    $(".three").click(() => {
+        let three = new AddToArray(3);
     });
 
-    $(".element:nth-child(5)").click(() => {
-
-
-
-        isZeroInInput("7");
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "7");
-            arr.splice(0, arr.length + 1, 0);
-        }
-        arr.push(7);
-
+    $(".seven").click(() => {
+        let seven = new AddToArray(7);
     });
 
-    $(".element:nth-child(6)").click(() => {
-
-
-
-        isZeroInInput("8");
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "8");
-            arr.splice(0, arr.length + 1, 0);
-        }
-        arr.push(8);
-
+    $(".eight").click(() => {
+        let eight = new AddToArray(8)
     });
 
-    $(".element:nth-child(7)").click(() => {
-
-
-
-        isZeroInInput("9");
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "9");
-            arr.splice(0, arr.length + 1, 0);
-        }
-        arr.push(9);
-
+    $(".nine").click(() => {
+        let nine = new AddToArray(9)
     });
 
-    $(".element:nth-child(9)").click(() => {
-
-
-
-        isZeroInInput("4");
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "4");
-            arr.splice(0, arr.length + 1, 0);
-        }
-        arr.push(4);
-
+    $(".four").click(() => {
+        let four = new AddToArray(4)
     });
 
-    $(".element:nth-child(10)").click(() => {
-
-
-
-        isZeroInInput("5");
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "5");
-            arr.splice(0, arr.length + 1, 0);
-        }
-        arr.push(5);
-
+    $(".five").click(() => {
+        let five = new AddToArray(5)
     });
 
-    $(".element:nth-child(11)").click(() => {
-
-
-
-        isZeroInInput("6");
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "6");
-            arr.splice(0, arr.length + 1, 0);
-        }
-        arr.push(6);
-
+    $(".six").click(() => {
+        let six = new AddToArray(6)
     });
 
-    $(".element:nth-child(18)").click(() => {
-
-        if (isZeroInInput("0") != true) {
-            arr.push(0);
-        }
-        else {
-            isZeroInInput("0");
-        }
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "0");
-            arr.splice(0, arr.length + 1, 0);
-        }
-
-
+    $(".zero").click(() => {
+        let zero = new AddToArray(0)
     });
 
     //Działanie klawiszy funkcyjnych
 
     /*Dzielenie*/
-    $(".element:nth-child(4)").click(function dzielenie() {
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "");
-            arr.splice(0, arr.length + 1, 0);
-        }
-
-        $("#result").attr("value", $("#result").val() + " / ");
-        arr.push("/");
-
+    $(".divider").click(function dzielenie() {
+        let divider = new AddToArray(" / ");
     });
 
     /*Mnożenie*/
-    $(".element:nth-child(8)").click(() => {
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "");
-            arr.splice(0, arr.length + 1, 0);
-
-        }
-
-        $("#result").attr("value", $("#result").val() + ' * ');
-        arr.push("*");
+    $(".multiplication").click(() => {
+        let multiplication = new AddToArray(" * ");
     });
 
     /*Odejmowanie*/
-    $(".element:nth-child(12)").click(() => {
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "");
-            arr.splice(0, arr.length + 1, 0);
-        }
-
-        $("#result").attr("value", $("#result").val() + ' - ');
-        arr.push("-");
+    $(".substraction").click(() => {
+        let subtraction = new AddToArray(" - ");
     });
 
     /*Dodawanie*/
-    $(".element:nth-child(16)").click(() => {
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "");
-            arr.splice(0, arr.length + 1, 0);
-        }
-        $("#result").attr("value", $("#result").val() + ' + ');
-        arr.push("+");
+    $(".plus").click(() => {
+        let add = new AddToArray(" + ");
     });
+
+
+
+    let functions = new Functions;
 
     /*Procent*/
-    $(".element:nth-child(1)").click(() => {
-
-        if (result == "Błąd matematyczny") {
-            result = 0;
-            arr.splice(0, arr.length + 1, 0);
-        }
-        let value = parseInt($("#result").val());
-        result = (value / 100);
-        $("#result").attr("value", result);
-        arr.splice(0, arr.length + 1, result);
-
-
+    $(".percent").click(() => {
+        functions.percent();
     });
 
-
-    /*CE*/
-    $(".element:nth-child(2)").click(() => {
-
-        arr.splice(0, arr.length + 1, 0);
-
-        $("#result").attr("value", "0");
-        console.log(arr);
-
-
-
+    /*backspace*/
+    $(".backspace").click(() => {
+        functions.backspace();
     });
 
     /*C*/
-    $(".element:nth-child(3)").click(() => {
-
-        arr.splice(0, arr.length + 1, 0);
-        $("#result").attr("value", "0");
-        console.log(arr);
-
+    $(".clear").click(() => {
+        functions.C();
     });
 
-    $(".element:nth-child(19)").click(() => {
-
-        if (result == "Błąd matematyczny") {
-            $("#result").attr("value", "");
-            arr.splice(0, arr.length + 1, 0);
-        }
-
-
-
-
-        $("#result").attr("value", $("#result").val() + ",");
-        arr.push(".");
-
-
-
-
-        console.log(arr);
-
+    /*Przecinek*/
+    $(".comma").click(() => {
+        functions.comma();
     });
 
-    $(".element:nth-child(20)").click(() => {
+    $(".equal").click(() => {
 
-
-
-        let action = arr.join("");
-        console.log(action);
-
-        result = eval(action);
-        if (result === Infinity || result === NaN || result === -Infinity) {
-            result = "Błąd matematyczny";
-
-            setTimeout(() => {
-                result = 0;
-                $("#result").attr("value", result);
-                arr.splice(0, arr.length + 1, result);
-            }, 2000);
-            arr.splice(0, arr.length + 1, 0);
-
-        };
-
-
-        console.log(action);
-
-        arr.splice(0, arr.length + 1, result);
-        $("#result").attr("value", result);
-        result = 0;
+        functions.equal();
     });
 
-
-    let date = new Date();
-
-    let year = date.getFullYear();
-
-    $("footer h3").html(`&copy; Copyright ${year} <a href='https://github.com/danielosd68'>Daniel Chyliński</a>`);
+    
 
 
 });
